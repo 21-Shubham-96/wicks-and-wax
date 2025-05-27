@@ -1,83 +1,63 @@
-import React, { useState } from "react";
+'use client';
 
-export default function HomePage() {
+import Image from 'next/image';
+import { useState } from 'react';
+
+const filterOptions = [
+  'Gifting',
+  'Weddings',
+  'Birthdays',
+  'Baby Showers',
+  'Deserts',
+  'Luxury',
+  'Budget',
+  "Mini's",
+];
+
+export default function Home() {
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
 
-  const filters = [
-    "Gifting",
-    "Weddings",
-    "Birthdays",
-    "Baby Showers",
-    "Deserts",
-    "Luxury",
-    "Budget",
-    "Mini's",
-  ];
-
-  const handleFilterClick = (filter: string) => {
-    setSelectedFilter(filter);
-    console.log("Selected filter:", filter);
-    // You can add filtering logic here later
-  };
-
   return (
-    <main
-      style={{
-        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-        margin: 0,
-        padding: 0,
-        backgroundColor: "#f9f5f1",
-        minHeight: "100vh",
-      }}
-    >
-      {/* Main Banner */}
-      <section
-        style={{
-          background:
-            "linear-gradient(135deg, #f3c677 0%, #f28c38 50%, #b54f3f 100%)",
-          color: "white",
-          padding: "80px 20px",
-          textAlign: "center",
-          fontSize: "2.8rem",
-          fontWeight: "700",
-          boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
-        }}
-      >
-        Wicks_a..n.d_Wax — Handcrafted Scented Candles
+    <main className="flex min-h-screen flex-col items-center justify-start p-6 bg-[#fffaf4]">
+      {/* Banner Section */}
+      <section className="w-full bg-gradient-to-br from-pink-100 to-orange-100 rounded-2xl shadow-md p-10 mb-6 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-pink-900 mb-4">
+          Welcome to Wicks and Wax
+        </h1>
+        <p className="text-lg text-pink-800 max-w-2xl mx-auto">
+          Handcrafted candles perfect for every occasion. Made with love, fragrance, and a spark of creativity.
+        </p>
       </section>
 
-      {/* Sub Banner with Filters */}
-      <section
-        style={{
-          backgroundColor: "#fff",
-          padding: "15px 10px",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "12px",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-        }}
-      >
-        {filters.map((filter) => (
+      {/* Sub-Banner Filter Options */}
+      <section className="w-full flex flex-wrap justify-center gap-3 mb-8">
+        {filterOptions.map((option) => (
           <button
-            key={filter}
-            onClick={() => handleFilterClick(filter)}
-            style={{
-              padding: "10px 18px",
-              borderRadius: "25px",
-              border: "2px solid #f28c38",
-              backgroundColor:
-                selectedFilter === filter ? "#f28c38" : "transparent",
-              color: selectedFilter === filter ? "white" : "#f28c38",
-              fontWeight: "600",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              fontSize: "1rem",
-            }}
+            key={option}
+            onClick={() => setSelectedFilter(option)}
+            className={`px-4 py-2 rounded-full text-sm font-medium border transition ${
+              selectedFilter === option
+                ? 'bg-pink-600 text-white border-pink-600'
+                : 'bg-white text-pink-600 border-pink-300 hover:bg-pink-100'
+            }`}
           >
-            {filter}
+            {option}
           </button>
         ))}
+      </section>
+
+      {/* Selected Filter Debug (Placeholder for future filtered content) */}
+      {selectedFilter && (
+        <div className="text-pink-700 text-md mb-4">
+          Showing candles for: <strong>{selectedFilter}</strong>
+        </div>
+      )}
+
+      {/* Placeholder for products */}
+      <section className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-white border border-pink-200 rounded-lg p-4 shadow-sm text-center">
+          <p className="text-pink-700">Your beautiful candles will appear here!</p>
+        </div>
       </section>
     </main>
   );
