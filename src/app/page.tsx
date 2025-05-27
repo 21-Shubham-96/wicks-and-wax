@@ -34,13 +34,6 @@ export default function Home() {
   const [viewCart, setViewCart] = useState(false);
   const [viewWishlist, setViewWishlist] = useState(false);
 
-  const toggleCart = (id: number) => {
-    setCart((prev) => {
-      const item = prev.find((i) => i.id === id);
-      return item ? prev : [...prev, { id, qty: 1 }];
-    });
-  };
-
   const incrementQty = (id: number) => {
     setCart((prev) => {
       const exists = prev.find((item) => item.id === id);
