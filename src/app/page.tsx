@@ -26,7 +26,7 @@ type Candle = {
 const sampleCandles: Candle[] = [
   { id: 1, name: 'Rose Delight', category: 'Gifting', image: '/candles/rose-delight.jpg', price: '₹150' },
   { id: 2, name: 'Mint Sparkle', category: 'Birthdays', image: '/candles/mint-sparkle.jpg', price: '₹120' },
-  { id: 3, name: 'Golden Glow', category: 'Luxury', image: '/candles/Golden_Glow.jpg', price: '₹200' },
+  { id: 3, name: 'Golden Glow', category: 'Luxury', image: '/candles/golden_glow.jpg', price: '₹200' },
 ];
 
 export default function Home() {
