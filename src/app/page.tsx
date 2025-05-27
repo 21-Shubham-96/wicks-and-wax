@@ -19,12 +19,14 @@ type Candle = {
   id: number;
   name: string;
   category: string;
+  image: string;
+  price: string;
 };
 
 const sampleCandles: Candle[] = [
-  { id: 1, name: 'Rose Delight', category: 'Gifting' },
-  { id: 2, name: 'Mint Sparkle', category: 'Birthdays' },
-  { id: 3, name: 'Golden Hour', category: 'Luxury' },
+  { id: 1, name: 'Rose Delight', category: 'Gifting', image: '/candles/rose-delight.jpg', price: '₹150' },
+  { id: 2, name: 'Mint Sparkle', category: 'Birthdays', image: '/candles/mint-sparkle.jpg', price: '₹120' },
+  { id: 3, name: 'Golden Glow', category: 'Luxury', image: '/candles/golden-glow.jpg', price: '₹200' },
 ];
 
 export default function Home() {
@@ -122,7 +124,7 @@ export default function Home() {
                   <button onClick={() => decrementQty(id)} className="p-1 text-pink-600">
                     <Minus size={16} />
                   </button>
-                  <span>{qty}</span>
+                  <span className="text-black">{qty}</span>
                   <button onClick={() => incrementQty(id)} className="p-1 text-pink-600">
                     <Plus size={16} />
                   </button>
@@ -174,13 +176,19 @@ export default function Home() {
           const itemInCart = cart.find((item) => item.id === candle.id);
           return (
             <div key={candle.id} className="bg-white border border-pink-200 rounded-lg p-4 shadow-sm">
-              <h3 className="text-lg font-semibold text-pink-700 mb-2">{candle.name}</h3>
+              <img
+                src={candle.image}
+                alt={candle.name}
+                className="w-full h-48 object-cover rounded-md mb-3"
+              />
+              <h3 className="text-lg font-semibold text-pink-700 mb-1">{candle.name}</h3>
+              <p className="text-sm text-pink-600 mb-2">{candle.price}</p>
               <div className="flex justify-between items-center mt-4">
                 <div className="flex items-center gap-2">
                   <button onClick={() => decrementQty(candle.id)} className="p-1 text-pink-600">
                     <Minus size={16} />
                   </button>
-                  <span>{itemInCart?.qty || 0}</span>
+                  <span className="text-black">{itemInCart?.qty || 0}</span>
                   <button onClick={() => incrementQty(candle.id)} className="p-1 text-pink-600">
                     <Plus size={16} />
                   </button>
