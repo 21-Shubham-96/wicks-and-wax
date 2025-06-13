@@ -42,7 +42,7 @@ const sampleCandles: Candle[] = [
     id: 3,
     name: "Golden Glow",
     category: "Luxury",
-    image: "/candles/golden_glow.jpeg",
+    image: "https://p1wjjkwlwt1uoajb.public.blob.vercel-storage.com/golden_glow.jpeg",
     price: "150/200",
   },
 ];
